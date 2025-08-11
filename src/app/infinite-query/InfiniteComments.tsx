@@ -16,7 +16,6 @@ export default function InfiniteComments() {
   } = useCommentsQuery();
 
   const comments = data?.pages.flatMap((page) => page.comments);
-  console.log("Data is: ", data)
 
   return (
     <div>

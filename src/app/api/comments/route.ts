@@ -45,7 +45,7 @@ export async function GET(request: Request) {
   const cursor = cursorParam ? parseInt(cursorParam, 10) : undefined;
 
   // You could also send this as a query parameter
-  const pageSize = 5;
+  const pageSize = 10;
 
   // Simulate network delay (between 300ms and 1000ms)
   const delay = Math.floor(Math.random() * 700) + 300;

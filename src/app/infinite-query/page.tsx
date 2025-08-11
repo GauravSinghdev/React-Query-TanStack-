@@ -1,8 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import InfiniteComments from "./InfiniteComments";
+import InfiniteCommentScroll from "./InfiniteCommentScroll";
+import { Button } from "@/components/ui/button";
 
 export default function InfiniteQueryPage() {
+  const [show, setShow] = useState(false);
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="mb-6">
@@ -21,13 +25,28 @@ export default function InfiniteQueryPage() {
         </p>
       </div>
 
-      <div className="mb-6">
+      <div className="mb-6 space-y-5">
+        <div className="flex gap-2 items-center justify-center">
+          <Button
+            onClick={() => setShow(false)}
+            className={`${!show ? "bg-purple-500" : ""}`}
+          >
+            Button
+          </Button>
+          <Button
+            onClick={() => setShow(true)}
+            className={`${show ? "bg-purple-500" : ""}`}
+          >
+            Scroll
+          </Button>
+        </div>
         <div className="border rounded-lg p-4 bg-gray-50">
-          <InfiniteComments />
+          {/* <InfiniteComments /> */}
+          {show ? <InfiniteCommentScroll /> : <InfiniteComments />}
         </div>
       </div>
 
-      <div className="mt-8 space-y-4 bg-gray-50 p-6 rounded-lg">
+      {/* <div className="mt-8 space-y-4 bg-gray-50 p-6 rounded-lg">
         <h2 className="text-2xl font-bold">Key Benefits of useInfiniteQuery</h2>
         <ul className="list-disc pl-5 space-y-2">
           <li>Seamless pagination with cursor-based loading</li>
@@ -61,7 +80,7 @@ export default function InfiniteQueryPage() {
           <li>Automatic rollbacks if the server request fails</li>
           <li>Enhanced user experience without sacrificing data integrity</li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
